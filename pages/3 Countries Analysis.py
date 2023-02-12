@@ -3,7 +3,6 @@ import streamlit as st
 from datetime import datetime
 import pandas as pd
 import plotly.express as px
-import Project_Helper as ph
 
 # load data
 @st.cache
