@@ -23,20 +23,9 @@ st.header(' ')
 st.header(' ')
 st.header(' ')
 st.header('Cases Map')
-# Country selection
-feature_options = st.selectbox('Select Case', ['Total Cases', 'Total Deaths'])
-if feature_options == 'Total Cases':
-    feature = 'New_cases'
-else:
-    feature = 'New_deaths'
 
-# Date selection
-start_date = st.date_input('Strat Data', datetime(2020,1,1))
-start_date = pd.to_datetime(start_date)
-end_date = st.date_input('End date', datetime(2023, 1, 1))
-end_date = pd.to_datetime(end_date)
 
-# Display Map
+# Map Function
 def plot_map(data, column):
     data2 = dict(type = 'choropleth',
                 locations = data.index,
@@ -54,6 +43,21 @@ def plot_map(data, column):
     choromap.update_layout(margin = {"r":0, "t":40, "l":0, "b":0})
     return(choromap)
 
+
+# Case selection
+feature_options = st.selectbox('Select Case', ['Total Cases', 'Total Deaths'])
+if feature_options == 'Total Cases':
+    feature = 'New_cases'
+else:
+    feature = 'New_deaths'
+
+# Date selection
+start_date = st.date_input('Strat Data', datetime(2020,1,1))
+start_date = pd.to_datetime(start_date)
+end_date = st.date_input('End date', datetime(2023, 1, 1))
+end_date = pd.to_datetime(end_date)
+
+# Display Map
 map_data = data[(data.Date_reported >= start_date) & (data.Date_reported <= end_date)].groupby('Country').sum()
 map = plot_map(map_data, feature)
 st.plotly_chart(map)
