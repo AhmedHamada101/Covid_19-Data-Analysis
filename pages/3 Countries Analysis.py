@@ -25,14 +25,14 @@ st.header(' ')
 # some plots
 st.subheader('1. Overview of Cases and Deaths in Top Countries')
 
-top_countries_cases = px.bar(data.groupby('Country')['New_cases'].sum().nlargest(20).sort_values(ascending = True), 
-                       title = 'The Top 20 Countries have Cases', orientation='h')
+top_countries_cases = px.bar(data.groupby('Country')['New_cases'].sum().nlargest(10).sort_values(ascending = True), 
+                       title = 'The Top 10 Countries have Cases', orientation='h')
 top_countries_cases.update(layout_showlegend = False)
 top_countries_cases.update_layout(xaxis_title = 'Regions', yaxis_title = 'Totle Cases')
 st.plotly_chart(top_countries_cases)
 
-top_countries_deaths = px.bar(data.groupby('Country')['New_deaths'].sum().nlargest(20).sort_values(ascending = True), 
-                       title = 'The Top 20 Countries have Deaths', orientation='h')
+top_countries_deaths = px.bar(data.groupby('Country')['New_deaths'].sum().nlargest(10).sort_values(ascending = True), 
+                       title = 'The Top 10 Countries have Deaths', orientation='h')
 top_countries_deaths.update_traces(marker_color = 'red')
 top_countries_deaths.update(layout_showlegend = False)
 top_countries_deaths.update_layout(xaxis_title = 'Regions', yaxis_title = 'Total Deaths')
