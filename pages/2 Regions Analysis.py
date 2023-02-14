@@ -43,19 +43,6 @@ st.subheader('2. More details about Cases and Deaths')
 st.header(' ')
 st.markdown('##### Select Region and Date')
 
-# Region selection
-region_options = st.selectbox('Select Region', ['All Regions', 'Select Region'])
-if region_options == 'All Regions':
-    regions = 'All Regions'
-else:
-    regions = st.multiselect('Select', data['WHO_region'].unique())
-
-# Date selection
-start_date = st.date_input('Strat Data', datetime(2020,1,1))
-start_date = pd.to_datetime(start_date)
-end_date = st.date_input('End date', datetime(2023, 1, 1))
-end_date = pd.to_datetime(end_date)
-
 
 # filter by regions
 def regions_total_cases_hist(regions, start_date = data.Date_reported.min(), end_date = data.Date_reported.max()):
@@ -76,6 +63,20 @@ def regions_total_deaths_hist(regions, start_date = data.Date_reported.min(), en
     fig = px.histogram(data_temp, x = 'Month_year', y = 'New_deaths', color = 'Year', 
                        title = 'Total Deaths', range_x = [start_date, end_date], nbins = 50)
     return fig
+
+
+# Region selection
+region_options = st.selectbox('Select Region', ['All Regions', 'Select Region'])
+if region_options == 'All Regions':
+    regions = 'All Regions'
+else:
+    regions = st.multiselect('Select', data['WHO_region'].unique())
+
+# Date selection
+start_date = st.date_input('Strat Data', datetime(2020,1,1))
+start_date = pd.to_datetime(start_date)
+end_date = st.date_input('End date', datetime(2023, 1, 1))
+end_date = pd.to_datetime(end_date)
 
 # Display Total Cases
 st.header('Total Cases')
