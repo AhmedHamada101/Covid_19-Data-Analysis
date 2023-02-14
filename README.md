@@ -2,7 +2,7 @@
 
 # 
 
-<img src="image.jpg">
+<img src="image.jpeg">
 
 # 
 # 
