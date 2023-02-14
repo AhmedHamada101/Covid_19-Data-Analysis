@@ -43,18 +43,6 @@ st.subheader('2. More details about Cases and Deaths')
 st.header(' ')
 st.markdown('##### Select Country and Date')
 
-# Country selection
-country_options = st.selectbox('Select Country', ['All Countries', 'Select Countries'])
-if country_options == 'All Countries':
-    countries = 'All Countries'
-else:
-    countries = st.multiselect('Select', data['Country'].unique())
-
-# Date selection
-start_date = st.date_input('Start date', datetime(2020, 1, 1))
-start_date = pd.to_datetime(start_date)
-end_date = st.date_input('End date', datetime(2023, 1, 1))
-end_date = pd.to_datetime(end_date)
 
 # filter by countries
 def countries_total_cases_hist(countries, start_date = data.Date_reported.min(), end_date = data.Date_reported.max()):
@@ -75,6 +63,21 @@ def countries_total_deaths_hist(countries, start_date = data.Date_reported.min()
     fig = px.histogram(data_temp, x = 'Month_year', y = 'New_deaths', color = 'Year', 
                        title = 'Total Deaths', range_x=[start_date, end_date], nbins = 50)
     return fig
+
+
+# Country selection
+country_options = st.selectbox('Select Country', ['All Countries', 'Select Countries'])
+if country_options == 'All Countries':
+    countries = 'All Countries'
+else:
+    countries = st.multiselect('Select', data['Country'].unique())
+
+# Date selection
+start_date = st.date_input('Start date', datetime(2020, 1, 1))
+start_date = pd.to_datetime(start_date)
+end_date = st.date_input('End date', datetime(2023, 1, 1))
+end_date = pd.to_datetime(end_date)
+
 
 # Display Total Cases
 st.header('Total Cases')
