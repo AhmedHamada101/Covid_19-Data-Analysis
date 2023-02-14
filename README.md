@@ -2,7 +2,7 @@
 
 # 
 
-<img src="app_image.jpg">
+<img src="image.jpg">
 
 # 
 # 
