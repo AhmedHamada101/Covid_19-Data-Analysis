@@ -20,7 +20,6 @@ data = load_data()
 st.markdown('<h1 style = "text-align:center;">Covid_19 Data Analysis</h1>', unsafe_allow_html = True)
 st.header(' ')
 st.header(' ')
-st.header(' ')
 
 # some plots
 st.subheader('1. Overview of Cases and Deaths in Top Countries')
