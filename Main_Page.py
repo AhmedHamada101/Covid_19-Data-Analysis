@@ -5,7 +5,7 @@ import streamlit as st
 st.markdown('<h1 style = "text-align:center;">Covid_19 Data Analysis</h1>', unsafe_allow_html = True)
 
 # add image
-st.image('image.pneg')
+st.image('image.jpeg')
 
 # add description
 st.header('Description')
