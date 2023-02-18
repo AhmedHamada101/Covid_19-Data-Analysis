@@ -7,4 +7,4 @@
 # 
 # 
 
-* Web App Link: https://covied-19-eda.streamlit.app
+* View the [Streamlit App](https://covied-19-eda.streamlit.app)  of this Project
